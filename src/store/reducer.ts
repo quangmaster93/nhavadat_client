@@ -1,26 +1,20 @@
 import produce from 'immer';
-import { ApplicationState, ApplicationAction } from './types';
+import { ApplicationState, initialState } from './types/StoreState';
+import { ApplicationAction, AppAction } from './types/ActionType';
 
-export const initialState: ApplicationState = {
-  loading: {
-    users: false,
-  },
-  users: [],
-}
-
-const reducer = (state:ApplicationState = initialState, action: ApplicationAction) => {
+const reducer = (state: ApplicationState = initialState, action: ApplicationAction) => {
   switch (action.type) {
-    case "loadUsersRequest":
-      return produce(state, draft => {
+    case AppAction.loadUsersRequest:
+      return produce(state, (draft) => {
         draft.loading.users = true;
       });
-    case "loadUsersSuccess":
-      return produce(state, draft => {
+    case AppAction.loadUsersSuccess:
+      return produce(state, (draft) => {
         draft.loading.users = false;
         draft.users = action.users;
       });
-    case "loadUsersError":
-      return produce(state, draft => {
+    case AppAction.loadUsersError:
+      return produce(state, (draft) => {
         draft.loading.users = false;
       });
   }

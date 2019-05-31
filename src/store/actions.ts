@@ -1,14 +1,16 @@
-import { User, LoadUsersRequest, LoadUsersSuccess, LoadUsersError } from './types';
+
+import { User } from '../types/User';
+import { LoadUsersRequest, LoadUsersSuccess, LoadUsersError, AppAction } from './types/ActionType';
 
 export const loadUsersRequest = (): LoadUsersRequest => ({
-  type: 'loadUsersRequest',
+  type: AppAction.loadUsersRequest,
 });
 
 export const loadUsersSuccess = (users: User[]): LoadUsersSuccess => ({
-  type: 'loadUsersSuccess',
+  type: AppAction.loadUsersSuccess,
   users,
 });
 
 export const loadUsersError = (): LoadUsersError => ({
-  type: 'loadUsersError',
+  type: AppAction.loadUsersError,
 });
